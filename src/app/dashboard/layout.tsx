@@ -1,5 +1,5 @@
 "use client";
-import outputs from "@/amplify_outputs.json";
+import outputs from "@/../amplify_outputs.json";
 import { Authenticator } from "@aws-amplify/ui-react";
 import { translations } from "@aws-amplify/ui-react";
 import { Amplify } from "aws-amplify";
