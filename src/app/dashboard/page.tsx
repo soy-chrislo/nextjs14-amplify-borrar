@@ -5,7 +5,15 @@ import getAllTodos from "@/controllers/todo/getAll";
 import React, { useEffect, useState } from "react";
 
 function page() {
-	const [todos, setTodos] = useState([]);
+	const [todos, setTodos] = useState<
+		{
+			content: string | null;
+			isDone: boolean | null;
+			id: string;
+			createdAt: string;
+			updatedAt: string;
+		}[]
+	>([]);
 
 	useEffect(() => {
 		const fetchTodos = async () => {

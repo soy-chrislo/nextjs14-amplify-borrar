@@ -5,6 +5,7 @@ import { translations } from "@aws-amplify/ui-react";
 import { Amplify } from "aws-amplify";
 import { I18n } from "aws-amplify/utils";
 import type { ReactNode } from "react";
+import "@aws-amplify/ui-react/styles.css";
 
 I18n.putVocabularies(translations);
 I18n.setLanguage("es");
