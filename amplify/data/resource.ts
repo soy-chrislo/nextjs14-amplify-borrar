@@ -21,11 +21,11 @@ const schema = a.schema({
 		.handler(a.handler.function(sayHello))
 		.authorization((allow) => [allow.publicApiKey()]),
 	chat: a
-		.generation({
+		.conversation({
 			aiModel: a.ai.model("Llama 3.1 70B Instruct"),
 			systemPrompt: "Eres un asistente virtual que habla español.",
 		})
-		.authorization((allow) => allow.authenticated()),
+		.authorization((allow) => allow.owner()),
 	generateEnterpreneurIdeas: a
 		.generation({
 			aiModel: a.ai.model("Llama 3.1 70B Instruct"),
