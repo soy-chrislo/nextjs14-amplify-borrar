@@ -20,6 +20,20 @@ const schema = a.schema({
 		.returns(a.string())
 		.handler(a.handler.function(sayHello))
 		.authorization((allow) => [allow.publicApiKey()]),
+	chat: a
+		.generation({
+			aiModel: a.ai.model("Llama 3.1 70B Instruct"),
+			systemPrompt: "Eres un asistente virtual que habla español.",
+		})
+		.authorization((allow) => allow.authenticated()),
+	generateEnterpreneurIdeas: a
+		.generation({
+			aiModel: a.ai.model("Llama 3.1 70B Instruct"),
+			systemPrompt: "Genera ideas de emprendimiento.",
+		})
+		.arguments({ prompt: a.string() })
+		.returns(a.string())
+		.authorization((allow) => allow.authenticated()),
 });
 
 export type Schema = ClientSchema<typeof schema>;
