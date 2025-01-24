@@ -32,7 +32,7 @@ const schema = a.schema({
 			systemPrompt: "Genera ideas de emprendimiento.",
 		})
 		.arguments({ prompt: a.string() })
-		.returns(a.customType({ prompt: a.string(), ideas: a.string() }))
+		.returns(a.customType({ prompt: a.string(), ideas: a.string().array() }))
 		.authorization((allow) => allow.authenticated()),
 });
 
