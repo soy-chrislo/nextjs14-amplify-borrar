@@ -13,10 +13,12 @@ export default function Page() {
 	// 'chat' is based on the key for the conversation route in your schema.
 
 	return (
-		<AIConversation
-			messages={messages}
-			isLoading={isLoading}
-			handleSendMessage={handleSendMessage}
-		/>
+		<>
+			<AIConversation
+				messages={messages}
+				isLoading={isLoading}
+				handleSendMessage={handleSendMessage}
+			/>
+		</>
 	);
 }

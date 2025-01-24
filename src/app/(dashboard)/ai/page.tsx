@@ -13,11 +13,11 @@ import { useAIGeneration } from "./main";
 
 export default function Page() {
 	const [description, setDescription] = React.useState("");
-	const [{ data, isLoading, hasError }, generateEnterpreneurIdeas] =
-		useAIGeneration("generateEnterpreneurIdeas");
+	const [{ data, isLoading, hasError }, generateRecipe] =
+		useAIGeneration("generateRecipe");
 
-	const handleClick = () => {
-		generateEnterpreneurIdeas({ prompt: description });
+	const handleClick = async () => {
+		generateRecipe({ description });
 	};
 
 	return (
@@ -29,21 +29,21 @@ export default function Page() {
 					onChange={(e) => setDescription(e.target.value)}
 					label="Description"
 				/>
-				<Button onClick={handleClick}>Generate ideas</Button>
+				<Button onClick={handleClick}>Generate recipe</Button>
 			</Flex>
 			{isLoading ? (
 				<Loader variation="linear" />
 			) : (
 				<>
-					<Heading level={2}>{data?.prompt}</Heading>
+					<Text fontWeight="bold">{data?.name}</Text>
 					<View as="ul">
-						{data?.ideas?.map((idea) => (
-							<Text as="li" key={idea}>
-								{idea}
-							</Text>
+						{data?.ingredients?.map((ingredient) => (
+							<View as="li" key={ingredient}>
+								{ingredient}
+							</View>
 						))}
 					</View>
-					<Text>{data?.prompt}</Text>
+					<Text>{data?.instructions}</Text>
 				</>
 			)}
 		</Flex>
