@@ -2,14 +2,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
+import type { Schema } from "../../../amplify/data/resource";
 
-interface Todo {
-	content: string | null;
-	isDone: boolean | null;
-	id: string;
-	createdAt: string;
-	updatedAt: string;
-}
+type Todo = Schema["Todo"]["type"];
 
 interface TodoListProps {
 	todos: Todo[];

@@ -3,5 +3,6 @@ import { generateClient } from "aws-amplify/api";
 export const amplifyClient = generateClient<Schema>();
 
 export default async function getAllTodos() {
-	return (await amplifyClient.models.Todo.list()).data;
+	const { data: items } = await amplifyClient.models.Todo.list();
+	return items;
 }
