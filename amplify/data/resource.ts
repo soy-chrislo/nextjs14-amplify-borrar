@@ -20,30 +20,6 @@ const schema = a.schema({
 		.returns(a.string())
 		.handler(a.handler.function(sayHello))
 		.authorization((allow) => [allow.publicApiKey()]),
-
-	chat: a
-		.conversation({
-			aiModel: a.ai.model("Llama 3.1 70B Instruct"),
-			systemPrompt: "You are a helpful assistant",
-		})
-		.authorization((allow) => allow.owner()),
-
-	generateRecipe: a
-		.generation({
-			aiModel: a.ai.model("Llama 3.1 70B Instruct"),
-			systemPrompt: "You are a helpful assistant that generates recipes.",
-		})
-		.arguments({
-			description: a.string(),
-		})
-		.returns(
-			a.customType({
-				name: a.string(),
-				ingredients: a.string().array(),
-				instructions: a.string(),
-			}),
-		)
-		.authorization((allow) => allow.authenticated()),
 });
 
 export type Schema = ClientSchema<typeof schema>;
